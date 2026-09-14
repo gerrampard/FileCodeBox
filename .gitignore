@@ -80,8 +80,8 @@ docs/_build/
 .pybuilder/
 target/
 *.db
-./filecodebox.db-shm
-./filecodebox.db-wal
+*.db-shm
+*.db-wal
 # Jupyter Notebook
 .ipynb_checkpoints
 
@@ -147,10 +147,15 @@ cython_debug/
 # Project
 .vscode
 .DS_Store
-for_test.py
 .html
-/evaluate/temp.py
-/evaluation/back.json
 data/.env
-.backup/
-/cloc-1.64.exe
+
+# Ignore node_modules
+node_modules/
+docs/.vitepress/cache/
+
+AGENTS.md
+
+dist/
+# Frontend themes (built from GitHub during Docker build)
+themes/

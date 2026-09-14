@@ -1,63 +1,113 @@
 <div align="center">
-<h1>File Delivery Cabinet - Lite</h1>
-<h2>FileCodeBox-Lite</h2>
-<p><em>Anonymous passcode sharing of text and files, picking up files just like picking up express deliveries</em></p>
-<p>Join our QQ Group: 739673698</p>
+
+<img src="./docs/public/logo_small.png" alt="FileCodeBox" width="96" />
+
+# FileCodeBox
+
+### Share files like picking up a package
+
+A lightweight, modern, self-hosted file sharing service. No account required—upload, share the passcode, and retrieve.
+
+[Live Demo](https://share.lanol.cn)　·　[Documentation](https://fcb-docs.aiuo.net/en/)　·　[简体中文](./readme.md)
+
+[![Release](https://img.shields.io/github/v/release/vastsa/FileCodeBox?style=flat-square&color=111111)](https://github.com/vastsa/FileCodeBox/releases/latest)
+[![Docker Pulls](https://img.shields.io/docker/pulls/lanol/filecodebox?style=flat-square&logo=docker&color=111111)](https://hub.docker.com/r/lanol/filecodebox)
+[![Stars](https://img.shields.io/github/stars/vastsa/FileCodeBox?style=flat-square&logo=github&color=111111)](https://github.com/vastsa/FileCodeBox/stargazers)
+[![License](https://img.shields.io/github/license/vastsa/FileCodeBox?style=flat-square&color=111111)](./LICENSE)
+
+<br />
+
+<img src="./.github/images/readme/banner_en.webp" alt="FileCodeBox" width="100%" />
+
 </div>
 
-![banner](https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/static/banners/img_1.png)
+## Start with one command
 
----
+```bash
+docker run -d --restart unless-stopped \
+  -p 12345:12345 \
+  -v ./data:/app/data \
+  -e APP_ENV=production \
+  -e LOG_LEVEL=warning \
+  --log-opt max-size=10m \
+  --log-opt max-file=3 \
+  --name filecodebox \
+  lanol/filecodebox:2.6.1 # x-release-please-version
+```
 
-<div align="center" style="text-align: center;margin: 20px 0">
-    <a href="./readme.md">简体中文</a> | 
-    <a href="./readme_en.md">English</a> | 
-    <a href="https://github.com/vastsa/FileCodeBox/wiki/Deployment-Tutorial">Deployment Guide</a> | 
-    <a href="https://github.com/vastsa/FileCodeBox/wiki/Frequently-asked-questions">FAQ</a>
-</div>
+Open `http://localhost:12345` and complete first-run setup. Pin a version in production; `latest` tracks the newest stable release.
 
-## Screenshots
+## Simple, yet capable
 
-<table style="width:100%">
-<tr style="width: 100%">
-<td style="width: 50%"><img src="./.github/images/img.png" alt="Send Files"></td>
-<td style="width: 50%"><img src="./.github/images/img_1.png" alt="Send Files"></td>
-</tr>
-<tr style="width: 100%">
-<td style="width: 50%"><img src="./.github/images/img_2.png" alt="Send Files"></td>
-<td style="width: 50%"><img src="./.github/images/img_3.png" alt="Send Files"></td>
-</tr>
-<tr style="width: 100%">
-<td style="width: 50%"><img src="./.github/images/img_4.png" alt="Send Files"></td>
-<td style="width: 50%"><img src="./.github/images/img_5.png" alt="Send Files"></td>
+<table>
+<tr>
+<td width="33%" valign="top"><b>Share instantly</b><br /><sub>Files and text in one flow, with drag, paste, batch, and chunked uploads.</sub></td>
+<td width="33%" valign="top"><b>Expire on your terms</b><br /><sub>Expire by time or retrieval count, keep forever, and clean up automatically.</sub></td>
+<td width="33%" valign="top"><b>Own your data</b><br /><sub>Local, S3, OneDrive, WebDAV, and OpenDAL storage on infrastructure you control.</sub></td>
 </tr>
 </table>
 
-## Key Features
+## From sharing to administration
 
-- [x] **Lightweight and Simple:** Built on Fastapi + Sqlite3 + Vue3 + ElementUI
-- [x] **Easy Upload:** Supports copy-paste and drag-and-drop selection
-- [x] **Multiple Types:** Supports text and files
-- [x] **Brute-Force Protection:** Limits on wrong attempts
-- [x] **Abuse Prevention:** IP-based upload limits
-- [x] **Passcode Sharing:** Random passcodes for storing and retrieving files, customizable retries, and expiration periods
-- [x] **Internationalization:** Supports Simplified Chinese, Traditional Chinese, English, etc.
-- [x] **Anonymous Sharing:** No registration or login required
-- [x] **Admin Panel:** View and delete files
-- [x] **One-Click Deployment:** Supports Docker one-click deployment
-- [x] **Flexible Expansion:** Supports S3 protocol and local file streams, with the ability to add new storage engines in the storage file
-- [x] **Simple and Clear:** Ideal for beginner projects
-- [x] **Terminal Download:** Terminal command `wget https://share.lanol.cn/share/select?code=83432`
+<table>
+<tr>
+<td width="50%"><img src="./.github/images/readme/send.webp" alt="File sharing screen" /></td>
+<td width="50%"><img src="./.github/images/readme/dashboard.webp" alt="Admin dashboard" /></td>
+</tr>
+</table>
 
-## Project Status
+<table>
+<tr>
+<td width="33%"><img src="./.github/images/readme/login.webp" alt="Admin login" /></td>
+<td width="33%"><img src="./.github/images/readme/files.webp" alt="File management" /></td>
+<td width="33%"><img src="./.github/images/readme/settings.webp" alt="System settings" /></td>
+</tr>
+</table>
 
-![Alt](https://repobeats.axiom.co/api/embed/7a6c92f1d96ee57e6fb67f0df371528397b0c9ac.svg "Repobeats analytics image")
+<div align="center">
 
-## Star History
+`FastAPI`　`Vue 3`　`SQLite`　`Docker`　`S3`　`WebDAV`　`Dark Mode`
 
-[![Star History Chart](https://api.star-history.com/svg?repos=vastsa/FileCodeBox&type=Date)](https://star-history.com/#vastsa/FileCodeBox&Date)
+</div>
+
+## Learn more
+
+- [Getting started](https://fcb-docs.aiuo.net/en/guide/getting-started) · deployment, setup, and upgrades
+- [Storage](https://fcb-docs.aiuo.net/en/guide/storage) · local and object storage
+- [Security](https://fcb-docs.aiuo.net/en/guide/security) · rate limits, sessions, and access protection
+- [API reference](https://fcb-docs.aiuo.net/en/api/) · upload, retrieval, and administration
+- [Frontend source](https://github.com/vastsa/FileCodeBoxFronted) · the active 2024 theme
+
+## Related projects
+
+If you enjoy self-hosted “box” tools, also check out this project from the same author:
+
+### [BokeBox](https://github.com/vastsa/BokeBox/) · Private AI Podcast Box
+
+Drop in videos, links, or drafts, and get listen-worthy personal podcasts with custom host persona and voice.
+
+<p align="center">
+  <a href="https://github.com/vastsa/BokeBox/">
+    <img src="./.github/images/readme/bokebox/banner_en.webp" alt="BokeBox banner" width="860" />
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/vastsa/BokeBox/">
+    <img src="./.github/images/readme/bokebox/home_en.webp" alt="BokeBox home" width="860" />
+  </a>
+</p>
+
+## Contributing
+
+[Issues](https://github.com/vastsa/FileCodeBox/issues/new/choose) and pull requests are welcome. FileCodeBox is released under [LGPL-3.0](./LICENSE).
 
 ## Disclaimer
 
-This project is open-sourced for learning purposes only and shall not be used for any illegal activities. Any consequences are the sole responsibility of the user and have no
-relation to the author. Please retain the project link when using. Thank you.
+Use FileCodeBox only for lawful file and text sharing. Do not upload, store, or distribute illegal, infringing, or unauthorized content. Operators are responsible for deployment security, data compliance, and content moderation.
+
+<div align="center">
+
+**If FileCodeBox helps you, consider leaving a Star.**
+
+</div>

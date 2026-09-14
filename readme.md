@@ -1,90 +1,113 @@
-![banner](https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/static/banners/img_1.png)
-
 <div align="center">
-<h1>文件快递柜-轻量</h1>
-<p><em>匿名口令分享文本，文件，像拿快递一样取文件</em></p>
-<p>交流Q群：739673698</p>
+
+<img src="./docs/public/logo_small.png" alt="FileCodeBox" width="96" />
+
+# FileCodeBox
+
+### 像取快递一样取文件
+
+一个轻量、现代的自托管文件分享工具。无需注册，上传后获得口令，对方输入即可取件。
+
+[在线演示](https://share.lanol.cn)　·　[使用文档](https://fcb-docs.aiuo.net/)　·　[English](./readme_en.md)
+
+[![Release](https://img.shields.io/github/v/release/vastsa/FileCodeBox?style=flat-square&color=111111)](https://github.com/vastsa/FileCodeBox/releases/latest)
+[![Docker Pulls](https://img.shields.io/docker/pulls/lanol/filecodebox?style=flat-square&logo=docker&color=111111)](https://hub.docker.com/r/lanol/filecodebox)
+[![Stars](https://img.shields.io/github/stars/vastsa/FileCodeBox?style=flat-square&logo=github&color=111111)](https://github.com/vastsa/FileCodeBox/stargazers)
+[![License](https://img.shields.io/github/license/vastsa/FileCodeBox?style=flat-square&color=111111)](./LICENSE)
+
+<br />
+
+<img src="./.github/images/readme/banner_zh.webp" alt="FileCodeBox" width="100%" />
+
 </div>
 
+## 一条命令开始
 
----
+```bash
+docker run -d --restart unless-stopped \
+  -p 12345:12345 \
+  -v ./data:/app/data \
+  -e APP_ENV=production \
+  -e LOG_LEVEL=warning \
+  --log-opt max-size=10m \
+  --log-opt max-file=3 \
+  --name filecodebox \
+  lanol/filecodebox:2.6.1 # x-release-please-version
+```
 
+访问 `http://localhost:12345`，完成首次初始化。生产环境建议固定版本号；`latest` 指向最新正式版。
 
-<div align="center" style="text-align: center;margin: 20px">
-    <a href="./readme.md">简体中文</a> | 
-    <a href="./readme_en.md">English</a> | 
-    <a href="https://github.com/vastsa/FileCodeBox/wiki/%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B">部署教程</a> | 
-    <a href="https://github.com/vastsa/FileCodeBox/wiki/%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B">常见问题</a>
-</div>
+## 简单，但足够强大
 
-## 新版预览（待发布）
-预览:fcb.065065.xyz
-<table style="width:100%">
-<tr style="width: 100%">
-<td style="width: 50%"><img src="./.github/images/img_7.png" alt="寄文件"></td>
-<td style="width: 50%"><img src="./.github/images/img_8.png" alt="寄文件"></td>
-</tr>
-<tr style="width: 100%">
-<td style="width: 50%"><img src="./.github/images/img_10.png" alt="寄文件"></td>
-<td style="width: 50%"><img src="./.github/images/img_9.png" alt="寄文件"></td>
-</tr>
-<tr style="width: 100%">
-<td style="width: 50%"><img src="./.github/images/img_11.png" alt="寄文件"></td>
-<td style="width: 50%"><img src="./.github/images/img_12.png" alt="寄文件"></td>
-</tr>
-<tr style="width: 100%">
-<td style="width: 50%"><img src="./.github/images/img_13.png" alt="寄文件"></td>
-<td style="width: 50%"><img src="./.github/images/img_14.png" alt="寄文件"></td>
+<table>
+<tr>
+<td width="33%" valign="top"><b>即传即取</b><br /><sub>文件与文本统一分享，支持拖拽、粘贴、批量与分片上传。</sub></td>
+<td width="33%" valign="top"><b>按需失效</b><br /><sub>按时间、取件次数或永久保存，自动清理过期内容。</sub></td>
+<td width="33%" valign="top"><b>数据自主</b><br /><sub>本地、S3、OneDrive、WebDAV 与 OpenDAL，数据留在自己的基础设施。</sub></td>
 </tr>
 </table>
 
-## 部分截图
+## 从分享，到管理
 
-<table style="width:100%">
-<tr style="width: 100%">
-<td style="width: 50%"><img src="./.github/images/img.png" alt="寄文件"></td>
-<td style="width: 50%"><img src="./.github/images/img_1.png" alt="寄文件"></td>
-</tr>
-<tr style="width: 100%">
-<td style="width: 50%"><img src="./.github/images/img_2.png" alt="寄文件"></td>
-<td style="width: 50%"><img src="./.github/images/img_3.png" alt="寄文件"></td>
-</tr>
-<tr style="width: 100%">
-<td style="width: 50%"><img src="./.github/images/img_4.png" alt="寄文件"></td>
-<td style="width: 50%"><img src="./.github/images/img_5.png" alt="寄文件"></td>
+<table>
+<tr>
+<td width="50%"><img src="./.github/images/readme/send.webp" alt="文件发送页面" /></td>
+<td width="50%"><img src="./.github/images/readme/dashboard.webp" alt="管理仪表盘" /></td>
 </tr>
 </table>
 
-## 主要特色
+<table>
+<tr>
+<td width="33%"><img src="./.github/images/readme/login.webp" alt="管理登录" /></td>
+<td width="33%"><img src="./.github/images/readme/files.webp" alt="文件管理" /></td>
+<td width="33%"><img src="./.github/images/readme/settings.webp" alt="系统设置" /></td>
+</tr>
+</table>
 
-- [x] **轻量简洁：** 项目基于Fastapi + Sqlite3 + Vue3 + ElementUI
-- [x] **轻松上传：** 支持复制粘贴和拖拽选择
-- [x] **多种类型：** 支持文本和文件
-- [x] **防止爆破：** 错误次数限制
-- [x] **防止滥用：** IP限制上传次数
-- [x] **口令分享：** 随机口令，存取文件，自定义次数及有效期
-- [x] **国际化：** 支持中文简体、繁体以及英文等
-- [x] **匿名分享：** 无需注册，无需登录
-- [x] **管理面板：** 查看和删除文件
-- [x] **一键部署：** 支持Docker一键部署
-- [x] **自由拓展：** 支持S3协议和本地文件流，可根据需求在storage文件中新增存储引擎
-- [x] **简单明了：** 适合新手练手项目
-- [x] **终端下载：** 终端命令`wget https://share.lanol.cn/share/select?code=83432`
-
-## Badges
 <div align="center">
-<a href="https://hellogithub.com/repository/75ad7ffedd404a6485b4d621ec5b47e6" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=75ad7ffedd404a6485b4d621ec5b47e6&claim_uid=beSz6INEkCM4mDH" alt="Featured｜HelloGitHub" style="width: 250px; height: 54px;" width="250" height="54" /></a>
+
+`FastAPI`　`Vue 3`　`SQLite`　`Docker`　`S3`　`WebDAV`　`Dark Mode`
+
 </div>
 
-## 状态
+## 继续了解
 
-![Alt](https://repobeats.axiom.co/api/embed/7a6c92f1d96ee57e6fb67f0df371528397b0c9ac.svg "Repobeats analytics image")
+- [快速开始](https://fcb-docs.aiuo.net/guide/getting-started) · 部署、初始化与升级
+- [存储配置](https://fcb-docs.aiuo.net/guide/storage) · 本地与对象存储
+- [安全设置](https://fcb-docs.aiuo.net/guide/security) · 限流、会话与访问保护
+- [API 文档](https://fcb-docs.aiuo.net/api/) · 上传、取件与管理接口
+- [前端源码](https://github.com/vastsa/FileCodeBoxFronted) · 当前 2024 主题
 
-## Star History
+## 相关项目
 
-[![Star History Chart](https://api.star-history.com/svg?repos=vastsa/FileCodeBox&type=Date)](https://star-history.com/#vastsa/FileCodeBox&Date)
+如果你也喜欢「盒子」系列的自托管工具，可以看看同作者的：
 
+### [BokeBox](https://github.com/vastsa/BokeBox/) · 私人 AI 播客盒
+
+把视频、链接或文稿丢进去，生成可听完的个人播客，支持自定义主持人设与声音。
+
+<p align="center">
+  <a href="https://github.com/vastsa/BokeBox/">
+    <img src="./.github/images/readme/bokebox/banner_zh.webp" alt="BokeBox 横幅" width="860" />
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/vastsa/BokeBox/">
+    <img src="./.github/images/readme/bokebox/home_zh.webp" alt="BokeBox 首页" width="860" />
+  </a>
+</p>
+
+## 参与项目
+
+欢迎 [提交 Issue](https://github.com/vastsa/FileCodeBox/issues/new/choose) 或 Pull Request。项目基于 [LGPL-3.0](./LICENSE) 发布。
 
 ## 免责声明
 
-本项目开源仅供学习使用，不得用于任何违法用途，否则后果自负，与本人无关。使用请保留项目地址，谢谢。
+本项目仅供合法的文件与文本分享场景使用。请勿上传、存储或传播违法、侵权或未经授权的内容；使用者应自行承担部署、数据合规与内容管理责任。
+
+<div align="center">
+
+**如果 FileCodeBox 对你有帮助，欢迎点亮一个 Star。**
+
+</div>
